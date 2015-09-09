@@ -19,7 +19,7 @@ The source code is commented; read it to find out what it's doing.
 
 ##Bonus
 As a bonus, I added `Spark.publish()` calls
-[documentation](https://docs.particle.io/reference/firmware/photon/#spark-publish-)
+([documentation](https://docs.particle.io/reference/firmware/photon/#spark-publish-))
 to also send data to Particle's cloud. If you have successfully connected
 to the Internet with your Photon, you can use (on Mac at least):
 
