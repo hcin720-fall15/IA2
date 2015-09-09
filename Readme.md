@@ -16,3 +16,32 @@ install` to get the necessary items.
 	to work.
 
 The source code is commented; read it to find out what it's doing.
+
+##Bonus
+As a bonus, I added `Spark.publish()` calls
+[documentation](https://docs.particle.io/reference/firmware/photon/#spark-publish-)
+to also send data to Particle's cloud. If you have successfully connected
+to the Internet with your Photon, you can use (on Mac at least):
+
+`curl https://api.particle.io/v1/devices/events?access_token=<your
+token>`
+
+to see a stream of events from your Photon in real time:
+
+```
+event: LEDEvent
+data: {"data":"on","ttl":"60","published_at":"2015-09-09T21:05:12.415Z","coreid":"33001c001747343337363432"}
+
+event: LEDEvent
+data: {"data":"off","ttl":"60","published_at":"2015-09-09T21:05:14.415Z","coreid":"33001c001747343337363432"}
+
+event: LEDEvent
+data: {"data":"on","ttl":"60","published_at":"2015-09-09T21:05:15.416Z","coreid":"33001c001747343337363432"}
+```
+
+Please note Particle's limitations on events (from the
+documentation page above):
+
+_**NOTE**: Currently, a device can publish at rate of about 1 event/sec,
+with bursts of up to 4 allowed in 1 second. Back to back burst of 4
+messages will take 4 seconds to recover._
