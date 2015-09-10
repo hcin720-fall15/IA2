@@ -3,6 +3,24 @@ This repository contains helper files to give you an example of
 communicating between your Photon and your web browser via the USB
 port.
 
+##What does it do?
+The key problem here is how to connect your computer's local resources
+(i.e., the serial port) to the web browser. Because of security
+concerns, the web browser isn't generally allowed to access hardware
+directly. We can use node from the command line to get to the serial
+port using the `serialport` module, but it would be nice to use the
+graphical capabilities of the browser to do cool stuff like
+visualizations.
+
+There are two parts to the code in this repository. One is a web
+server that runs with node. It talks to the serial port and gets data
+from your Photon, Arduino, or whatever else is connected. It then
+sends this data over a _websocket_[^1] to the other part, which is a web
+page loaded in the browser via that web server. In this way, the
+serial port is opened up to the browser, but in a controlled,
+more-secure manner.
+
+##How to install it?
 Check out this repository, change into the directory, then run `npm
 install` to get the necessary items.
 
@@ -45,3 +63,8 @@ documentation page above):
 _**NOTE**: Currently, a device can publish at rate of about 1 event/sec,
 with bursts of up to 4 allowed in 1 second. Back to back burst of 4
 messages will take 4 seconds to recover._
+
+##Footnotes
+[^1]: A websocket is much like a regular networking socket, but it
+	happens in the web browser. There are handy libraries like `socket.io`
+	that take care of this kind of stuff for you.
