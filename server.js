@@ -8,7 +8,7 @@ var SerialPort = serialport.SerialPort;
 var serial;
 
 //When a request come into the server for / give the client the file index.html
-app.get('/', function(req, res){res.sendfile('index.html');});
+app.get('/', function(req, res){res.sendFile('./index.html', { root: __dirname});});
 
 //Listen for incoming connections
 http.listen(3000, function(){console.log("listening on port 3000");});
