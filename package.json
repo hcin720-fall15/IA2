@@ -1,11 +1,27 @@
 {
-  "name": "assignment2_helper",
-  "version": "1.0.0",
+  "name": "photon_serial_helper",
+  "version": "1.0.1",
+  "description": "Helps connect a Photon to the browser",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hcin720-fall15/IA2.git"
+  },
   "author": "Daniel Ashbrook",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hcin720-fall15/IA2/issues"
+  },
+  "homepage": "https://github.com/hcin720-fall15/IA2#readme",
   "dependencies": {
-    "express": "^4.13.3",
+    "colors": "^1.1.2",
+    "express": "^4.16.2",
     "http": "0.0.0",
-    "serialport": "^1.7.4",
-    "socket.io": "^1.3.6"
+    "serialport": "^6.0.0",
+    "socket.io": "^2.0.3"
   }
 }
