@@ -17,7 +17,7 @@ visualizations.
 There are two parts to the code in this repository. One is a web
 server that runs with node. It talks to the serial port and gets data
 from your Photon, Arduino, or whatever else is connected. It then
-sends this data over a _websocket_[^1] to the other part, which is a web
+sends this data over a _websocket_<sup>[1](#fn1)</sup> to the other part, which is a web
 page loaded in the browser via that web server. In this way, the
 serial port is opened up to the browser, but in a controlled,
 more-secure manner.
@@ -70,6 +70,6 @@ messages will take 4 seconds to recover._
 
 ## Footnotes
 
-[^1]: A websocket is much like a regular networking socket, but it
+<a name="fn1">1</a>: A websocket is much like a regular networking socket, but it
 	happens in the web browser. There are handy libraries like `socket.io`
 	that take care of this kind of stuff for you.
