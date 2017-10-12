@@ -1,9 +1,11 @@
-#Individual Assignment 2 helper files
+# Individual Assignment 2 helper files
+
 This repository contains helper files to give you an example of
 communicating between your Photon and your web browser via the USB
 port.
 
-##What does it do?
+## What does it do?
+
 The key problem here is how to connect your computer's local resources
 (i.e., the serial port) to the web browser. Because of security
 concerns, the web browser isn't generally allowed to access hardware
@@ -20,7 +22,8 @@ page loaded in the browser via that web server. In this way, the
 serial port is opened up to the browser, but in a controlled,
 more-secure manner.
 
-##How to install it?
+## How to install it?
+
 Check out this repository, change into the directory, then run `npm
 install` to get the necessary items.
 
@@ -35,9 +38,10 @@ install` to get the necessary items.
 
 The source code is commented; read it to find out what it's doing.
 
-##Bonus
+## Bonus
+
 As a bonus, I added `Spark.publish()` calls
-([documentation](https://docs.particle.io/reference/firmware/photon/#spark-publish-))
+([documentation](https://docs.particle.io/reference/firmware/photon/# spark-publish-))
 to also send data to Particle's cloud. If you have successfully connected
 to the Internet with your Photon, you can use (on Mac at least):
 
@@ -64,7 +68,8 @@ _**NOTE**: Currently, a device can publish at rate of about 1 event/sec,
 with bursts of up to 4 allowed in 1 second. Back to back burst of 4
 messages will take 4 seconds to recover._
 
-##Footnotes
+## Footnotes
+
 [^1]: A websocket is much like a regular networking socket, but it
 	happens in the web browser. There are handy libraries like `socket.io`
 	that take care of this kind of stuff for you.
