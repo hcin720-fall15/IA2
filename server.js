@@ -17,16 +17,17 @@ http.listen(3000, function(){console.log("listening on port 3000");});
 var onSerialOpen = function()
 {
 	console.log("opened serial port");
-	//When we get data from the serial port...
+	//When we get the "data" event from the serial port...
 	serial.on('data', function(data)
 	{
 		console.log("got some data from Photon: ", data);
 
-		//Send to the browser; 'data' is the name of the event
-		io.emit('to browser', data);
+		//Send to the browser; 'photon_data' is the name of the event
+		io.emit('photon_data', data);
 	});
 
 };
+
 
 //Here's what happens when a connection is made from the browser
 io.sockets.on('connection',
@@ -34,9 +35,9 @@ io.sockets.on('connection',
 	{
 		console.log("someone connected");
 
-		//Since the socket is open, we can now accept "to serial" messages
+		//Since the socket is open, we can now accept "to_serial" messages
 		// from the browser
-		socket.on('to serial', function(data)
+		socket.on('to_serial', function(data)
 		{
 			if(serial && serial.isOpen())
 			{
@@ -49,13 +50,19 @@ io.sockets.on('connection',
 	}
 );
 
-exec('particle serial list', function(error, stdout, stderr) {
-  var devName = stdout.split('\n')[1].split(' - ')[0];
-  console.log(devName);
 
-  //Hook up the serial port
-  serial = new SerialPort( devName,
-														{parser: serialport.parsers.readline('\n')});
-  //When the serial port is successfully opened...
-  serial.on('open', onSerialOpen);
-});
+//Find out what serial port the Photon is connected to
+exec('particle serial list',
+	function(error, stdout, stderr)
+	{
+		var devName = stdout.split('\n')[1].split(' - ')[0];
+		console.log("Detected Photon on " + devName);
+
+		//Hook up the serial port, automatically split on newlines
+		serial = new SerialPort(devName, {parser: serialport.parsers.readline('\n')});
+
+		//When the serial port is successfully opened we get the "open"
+		// event, then call onSerialOpen() above
+		serial.on('open', onSerialOpen);
+	}
+);
