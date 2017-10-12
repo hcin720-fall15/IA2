@@ -12,6 +12,9 @@ var serial;
 //When a request comes into the server for / give the client the file index.html
 app.get('/', function(req, res){res.sendFile(__dirname + '/index.html');});
 
+//Get other files that are requested by name
+app.get(/^(.+)$/, function(req, res){res.sendFile(__dirname + req.params[0])});
+
 //Listen for incoming connections
 http.listen(3000, function(){console.log("listening on port 3000");});
 
